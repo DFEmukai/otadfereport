@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>全社売上管理・業務効率化プロジェクト 提案書</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap');
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: #f3f4f6;
+            color: #1f2937;
+        }
+        .section-card {
+            background: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        .status-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header -->
+    <header class="bg-slate-800 text-white p-6 shadow-lg">
+        <div class="max-w-5xl mx-auto flex justify-between items-center">
+            <div>
+                <h1 class="text-2xl font-bold">全社売上管理・業務効率化プロジェクト 提案書</h1>
+                <p class="text-slate-400 text-sm mt-1">提出日: 2026年1月XX日 / 作成者: プロジェクトチーム（向井・太田）</p>
+            </div>
+            <div class="hidden md:block">
+                <span class="bg-blue-600 text-white px-4 py-2 rounded-md font-bold text-sm">社長決裁用資料</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-5xl mx-auto p-4 md:p-8">
+
+        <!-- Executive Summary -->
+        <div class="section-card border-l-4 border-blue-600">
+            <h2 class="text-xl font-bold mb-4 flex items-center text-slate-800">
+                <i class="fas fa-bullseye text-blue-600 mr-3"></i>エグゼクティブサマリー
+            </h2>
+            <p class="mb-4 leading-relaxed">
+                現在、各事業所において「売上エビデンスの欠如」「システム分断による手作業の限界」「コンプライアンスリスク」が発生しています。
+                特に神戸においては、経理データと現場日報の間で<span class="font-bold text-red-600">約1,000万円の差異</span>が確認されました。
+                本プロジェクトは、単なる集計業務の自動化に留まらず、<strong>POSシステム等の基幹システム再構築による「正しい数字の把握」</strong>と、バックオフィス業務の集約による<strong>「現場の接客品質向上」</strong>を目的とします。
+            </p>
+        </div>
+
+        <!-- 1. 現状の課題 -->
+        <div class="section-card">
+            <h2 class="text-xl font-bold mb-6 flex items-center text-slate-800 border-b pb-2">
+                <i class="fas fa-exclamation-triangle text-amber-500 mr-3"></i>1. 現状の課題 (Issues)
+            </h2>
+            
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- 課題：神戸 -->
+                <div class="bg-slate-50 p-4 rounded-lg">
+                    <h3 class="font-bold text-lg mb-2 text-slate-700">【神戸】売上管理とコンプライアンスの欠如</h3>
+                    <ul class="list-disc list-inside space-y-2 text-sm text-slate-600">
+                        <li><strong>数値の乖離:</strong> 経理報告（正司氏）と現場日報（西岡氏）で売上実績に約1,000万円の差異あり。</li>
+                        <li><strong>基幹システムの不在:</strong> 予約システム（TableCheck）のみで売上計算機能がなく、POSとの連携もない。</li>
+                        <li><strong>税務リスク:</strong> 領収書発行や軽減税率対応（8%/10%）の管理が不透明。</li>
+                    </ul>
+                </div>
+
+                <!-- 課題：飯綱・天狗 -->
+                <div class="bg-slate-50 p-4 rounded-lg">
+                    <h3 class="font-bold text-lg mb-2 text-slate-700">【飯綱・天狗】アナログ運用と労力</h3>
+                    <ul class="list-disc list-inside space-y-2 text-sm text-slate-600">
+                        <li><strong>過度な手作業:</strong> システムが分断（券売機、売店レジ等）されており、Excelへの手入力で集計している（「すごい労力」）。</li>
+                        <li><strong>税区分の未整備:</strong> 天狗の館等のレポートがすべて「税込」管理となっており、経営分析に適さない。</li>
+                    </ul>
+                </div>
+
+                <!-- 課題：全社共通 -->
+                <div class="bg-slate-50 p-4 rounded-lg md:col-span-2">
+                    <h3 class="font-bold text-lg mb-2 text-slate-700">【全社共通・その他】</h3>
+                    <ul class="list-disc list-inside space-y-2 text-sm text-slate-600">
+                        <li><strong>現金管理リスク:</strong> グランルーク等で多額の現金（約1,000万円）が金庫に滞留。銀行入金業務が負担かつリスク。</li>
+                        <li><strong>アマンディのシステム老朽化:</strong> 温浴システムが保守切れ寸前であり、宿泊PMS（Staysee）との連携も分断。</li>
+                        <li><strong>管理会計の不統一:</strong> 施設ごとに勘定科目の定義がバラバラであり、横断的な経営分析が不可能。</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. 解決策 -->
+        <div class="section-card">
+            <h2 class="text-xl font-bold mb-6 flex items-center text-slate-800 border-b pb-2">
+                <i class="fas fa-lightbulb text-green-600 mr-3"></i>2. 解決策 (Solutions)
+            </h2>
+
+            <div class="space-y-6">
+                <!-- Solution 1 -->
+                <div class="flex items-start">
+                    <div class="bg-blue-100 text-blue-800 font-bold rounded-full w-8 h-8 flex items-center justify-center mr-4 shrink-0">1</div>
+                    <div>
+                        <h3 class="font-bold text-lg text-slate-800">基幹システム(POS)の導入と連携強化</h3>
+                        <p class="text-sm text-slate-600 mb-2">エビデンスのある正確な売上データを自動取得する環境を構築します。</p>
+                        <div class="bg-white border rounded p-3 text-sm">
+                            <ul class="list-disc list-inside space-y-1">
+                                <li><strong>神戸:</strong> Oracle Micros POS（または同等）を導入し、TableCheck（予約）と連携。オーダー、アレルギー情報、売上計算を一元化し、正しい会計データを出力。</li>
+                                <li><strong>飯綱・天狗:</strong> スマレジ等のクラウドPOSを導入し、券売機データを集約。商品マスタで税区分（入湯税等）を自動計算化。</li>
+                                <li><strong>グランルーク:</strong> 既存のinntoシステムのプラン見直し、またはAPI連携によるデータ抽出の自動化。</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Solution 2 -->
+                <div class="flex items-start">
+                    <div class="bg-blue-100 text-blue-800 font-bold rounded-full w-8 h-8 flex items-center justify-center mr-4 shrink-0">2</div>
+                    <div>
+                        <h3 class="font-bold text-lg text-slate-800">管理会計とマスタの統一 (PMI)</h3>
+                        <p class="text-sm text-slate-600 mb-2">現場の入力ルールを統一し、経営判断に資するレポートを自動生成します。</p>
+                        <div class="bg-white border rounded p-3 text-sm">
+                            <ul class="list-disc list-inside space-y-1">
+                                <li>各施設の売上科目を「料理」「飲料」「室料」「その他」等に標準化。</li>
+                                <li>会計システム（TKC等）と連動しやすいデータ形式へ変換フローを構築。</li>
+                                <li>ダッシュボード化によるリアルタイム経営数値の可視化。</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Solution 3 -->
+                <div class="flex items-start">
+                    <div class="bg-blue-100 text-blue-800 font-bold rounded-full w-8 h-8 flex items-center justify-center mr-4 shrink-0">3</div>
+                    <div>
+                        <h3 class="font-bold text-lg text-slate-800">組織体制の再編（データファイナンス化）</h3>
+                        <p class="text-sm text-slate-600 mb-2">バックオフィス業務を集約し、現場は「接客」に集中できる環境を作ります。</p>
+                        <div class="bg-white border rounded p-3 text-sm">
+                            <ul class="list-disc list-inside space-y-1">
+                                <li><strong>バックオフィス集約:</strong> 正司氏、岡田氏、西岡氏等を「データファイナンスチーム（大阪）」として再編し、全社の計数管理・分析を担当。</li>
+                                <li><strong>現場の負担軽減:</strong> 複雑な集計業務や現金管理から現場を解放。現金は極力キャッシュレス化、または即時入金フローへ変更。</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. 役割分担 -->
+        <div class="section-card">
+            <h2 class="text-xl font-bold mb-6 flex items-center text-slate-800 border-b pb-2">
+                <i class="fas fa-users-cog text-purple-600 mr-3"></i>3. 役割分担 (Roles)
+            </h2>
+            
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-slate-100 text-slate-600 text-sm uppercase">
+                            <th class="p-3 border-b font-bold w-1/4">担当</th>
+                            <th class="p-3 border-b font-bold w-1/3">主な役割・責任</th>
+                            <th class="p-3 border-b font-bold">具体的アクション</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-sm">
+                        <tr class="border-b hover:bg-slate-50">
+                            <td class="p-3 font-bold text-slate-800">
+                                <div class="flex items-center">
+                                    <span class="w-2 h-2 bg-purple-500 rounded-full mr-2"></span>
+                                    向井（DFE）
+                                </div>
+                            </td>
+                            <td class="p-3">
+                                <strong>戦略・システム選定・自動化</strong><br>
+                                全体設計とベンダー交渉、AI活用
+                            </td>
+                            <td class="p-3 text-slate-600">
+                                <ul class="list-disc list-inside">
+                                    <li>会長への報告・決裁取得</li>
+                                    <li>Oracle Micros、スマレジ、TAP等のベンダー選定・交渉</li>
+                                    <li>データダッシュボード構築と自動化実装</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr class="border-b hover:bg-slate-50">
+                            <td class="p-3 font-bold text-slate-800">
+                                <div class="flex items-center">
+                                    <span class="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
+                                    太田（ホテルニューオウミ）
+                                </div>
+                            </td>
+                            <td class="p-3">
+                                <strong>PM・現場分析・マスタ定義</strong><br>
+                                現場オペレーションへの落とし込み
+                            </td>
+                            <td class="p-3 text-slate-600">
+                                <ul class="list-disc list-inside">
+                                    <li>神戸1,000万円差異の原因究明とデータ整理</li>
+                                    <li>飯綱・天狗の現地調査（1/13-14）と改善案策定</li>
+                                    <li>全社共通フォーマットの設計とマスタ統一</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr class="border-b hover:bg-slate-50">
+                            <td class="p-3 font-bold text-slate-800">
+                                <div class="flex items-center">
+                                    <span class="w-2 h-2 bg-gray-500 rounded-full mr-2"></span>
+                                    内部スタッフ<br>（正司・西岡・福島等）
+                                </div>
+                            </td>
+                            <td class="p-3">
+                                <strong>実データ提供・運用移行</strong><br>
+                                新体制（データファイナンス）への移行
+                            </td>
+                            <td class="p-3 text-slate-600">
+                                <ul class="list-disc list-inside">
+                                    <li>正確な実績データの提供（正司データ基準）</li>
+                                    <li>新システム（POS等）への運用切り替え</li>
+                                    <li>手作業集計業務の廃止と分析業務へのシフト</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Roadmap -->
+        <div class="section-card">
+            <h2 class="text-xl font-bold mb-4 flex items-center text-slate-800">
+                <i class="fas fa-calendar-alt text-indigo-600 mr-3"></i>今後のロードマップ
+            </h2>
+            <div class="relative border-l-2 border-slate-200 ml-3 space-y-6">
+                <div class="ml-6">
+                    <span class="absolute -left-2 mt-1 w-4 h-4 bg-blue-600 rounded-full border-2 border-white"></span>
+                    <h3 class="font-bold text-slate-800">フェーズ 1：現状把握とエビデンス確定（1月）</h3>
+                    <p class="text-sm text-slate-600">神戸のデータ差異解明、飯綱現地調査、全社統一フォーマットへの実績入力完了。</p>
+                </div>
+                <div class="ml-6">
+                    <span class="absolute -left-2 mt-1 w-4 h-4 bg-slate-300 rounded-full border-2 border-white"></span>
+                    <h3 class="font-bold text-slate-800">フェーズ 2：システム選定と導入準備（2月〜3月）</h3>
+                    <p class="text-sm text-slate-600">Micros POS、スマレジ等の導入決定。アマンディ改修に合わせたシステム計画策定。</p>
+                </div>
+                <div class="ml-6">
+                    <span class="absolute -left-2 mt-1 w-4 h-4 bg-slate-300 rounded-full border-2 border-white"></span>
+                    <h3 class="font-bold text-slate-800">フェーズ 3：新体制稼働と管理会計導入（4月〜）</h3>
+                    <p class="text-sm text-slate-600">神戸TableCheck切替、データファイナンスチームによる中央集権的な計数管理スタート。</p>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-800 text-slate-400 py-6 text-center text-sm">
+        <p>CONFIDENTIAL - INTERNAL USE ONLY</p>
+    </footer>
+
+</body>
+</html>
